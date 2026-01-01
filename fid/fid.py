@@ -17,10 +17,8 @@ def info(vid: str):
 @app.command()
 def audio(vid: Path):
     if vid.suffix.lower() in formats:
-        Vdir= vid.parent
-        audio= Vdir / "Audio"
-        audio.mkdir(exist_ok=True)
-        subprocess.run(["ffmpeg", "-i", vid, "-vn", "-acodec", "mp3", "-y", str(audio / "audio.mp3")], check=True)
+        audio=vid.with_suffix(".mp3")
+        subprocess.run(["ffmpeg", "-i", vid, "-vn", "-acodec", "mp3", "-y", str(audio)], check=True)
     else:
         print("plz enter a proper video format")
 
@@ -31,6 +29,22 @@ def frames(vid: Path):
         frames= Fdir / "Frames"
         frames.mkdir(exist_ok=True)
         subprocess.run(["ffmpeg", "-i", str(vid),str(frames/ "frame_%01d.png")],check=True )
+    else:
+        print("plz enter a proper video format")
+
+@app.command()
+def gif(vid: Path):
+    if vid.suffix.lower() in formats:
+        gif=vid.with_suffix(".gif")
+        subprocess.run(["ffmpeg", "-i", vid, "-t", "3", "-vf", "scale=320:-1", "-y", str(gif)], check=True)
+    else:
+        print("plz enter a proper video format")
+
+@app.command()
+def mute(vid: Path):
+    if vid.suffix.lower() in formats:
+        mute=vid.with_stem(f"{vid.stem}_muted").with_suffix(vid.suffix)
+        subprocess.run(["ffmpeg", "-i", vid, "-c", "copy", "-an", "-y", str(mute)], check=True)
     else:
         print("plz enter a proper video format")
 
