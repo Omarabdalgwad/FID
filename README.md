@@ -1,5 +1,5 @@
 # FID
-simple ffmpeg based cli for video/audio operations
+simple ffmpeg based cli for video operations
 
 ## installation
 ```bash
