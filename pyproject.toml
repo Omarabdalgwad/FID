@@ -1,12 +1,13 @@
 [build-system]
-requires = ["setuptools>=61.0","wheel"]
+requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
+
 [project]
-name = "fid"
-version = "0.1.0"
+name = "fid-cli"
+version = "0.2.0"
 description = "Simple based ffmpeg CLI for video/audio operations"
-authors = [
-  {name = "omar_abdalgwad", email = "ahlawyomar95@gmail.com"}]
+readme = "README.md"
+authors = [{ name = "omar_abdalgwad", email = "ahlawyomar95@gmail.com" }]
 dependencies = ["typer>=0.7"]
 [project.scripts]
 fid = "fid.fid:app"
