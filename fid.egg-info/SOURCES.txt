@@ -1,9 +1,0 @@
-pyproject.toml
-fid/__init__.py
-fid/fid.py
-fid.egg-info/PKG-INFO
-fid.egg-info/SOURCES.txt
-fid.egg-info/dependency_links.txt
-fid.egg-info/entry_points.txt
-fid.egg-info/requires.txt
-fid.egg-info/top_level.txt

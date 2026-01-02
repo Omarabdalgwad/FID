@@ -1,6 +1,0 @@
-Metadata-Version: 2.4
-Name: fid
-Version: 0.1.0
-Summary: Simple based ffmpeg CLI for video/audio operations
-Author-email: omar_abdalgwad <ahlawyomar95@gmail.com>
-Requires-Dist: typer>=0.7
