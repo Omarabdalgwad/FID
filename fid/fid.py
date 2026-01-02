@@ -1,7 +1,6 @@
 import typer
 import subprocess
 from pathlib import Path
-
 app = typer.Typer()
 
 formats = [".mp4",".mov",".avi",".webm"]
