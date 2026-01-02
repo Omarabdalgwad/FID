@@ -1,13 +1,19 @@
 import typer
 import subprocess
 from pathlib import Path
+import shutil
 app = typer.Typer()
 
 formats = [".mp4",".mov",".avi",".webm"]
 
+def ffmpeg():
+    if shutil.which("ffmpeg")is None:
+        print("ffmpeg is't installed\n download from: https://ffmpeg.org/download.html")
+        exit()
 
 @app.command()
 def info(vid: str):
+    ffmpeg()
     if vid.lower().endswith(tuple(formats)):
         subprocess.run(["ffprobe", "-v", "error", "-show_format", "-show_streams", vid], check=True)
     else:
@@ -15,6 +21,7 @@ def info(vid: str):
 
 @app.command()
 def audio(vid: Path):
+    ffmpeg()
     if vid.suffix.lower() in formats:
         audio=vid.with_suffix(".mp3")
         subprocess.run(["ffmpeg", "-i", vid, "-vn", "-acodec", "mp3", "-y", str(audio)], check=True)
@@ -23,6 +30,7 @@ def audio(vid: Path):
 
 @app.command()
 def frames(vid: Path):
+    ffmpeg()
     if vid.suffix.lower() in formats:
         Fdir= vid.parent
         frames= Fdir / "Frames"
@@ -33,6 +41,7 @@ def frames(vid: Path):
 
 @app.command()
 def gif(vid: Path):
+    ffmpeg()
     if vid.suffix.lower() in formats:
         gif=vid.with_suffix(".gif")
         subprocess.run(["ffmpeg", "-i", vid, "-t", "3", "-vf", "scale=320:-1", "-y", str(gif)], check=True)
@@ -41,6 +50,7 @@ def gif(vid: Path):
 
 @app.command()
 def mute(vid: Path):
+    ffmpeg()
     if vid.suffix.lower() in formats:
         mute=vid.with_stem(f"{vid.stem}_muted").with_suffix(vid.suffix)
         subprocess.run(["ffmpeg", "-i", vid, "-c", "copy", "-an", "-y", str(mute)], check=True)
