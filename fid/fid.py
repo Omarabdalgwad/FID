@@ -58,4 +58,4 @@ def mute(vid: Path):
         print("plz enter a proper video format")
 
 if __name__=="__main__":
-  app()
+        app()
