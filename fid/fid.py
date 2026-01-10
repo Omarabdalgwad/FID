@@ -8,54 +8,59 @@ formats = [".mp4",".mov",".avi",".webm"]
 
 def ffmpeg():
     if shutil.which("ffmpeg")is None:
-        print("ffmpeg is't installed\n download from: https://ffmpeg.org/download.html")
-        exit()
+        print("ffmpeg isn't installed\n download from: https://ffmpeg.org/download.html")
+        raise typer.Exit()
+
+def ckvideo(vid:Path):
+    if not vid.exists():
+        print("file doesn't exist")
+        raise typer.Exit()
+    
+
 
 @app.command()
-def info(vid: str):
+def info(vid: Path):
     ffmpeg()
-    if vid.lower().endswith(tuple(formats)):
-        subprocess.run(["ffprobe", "-v", "error", "-show_format", "-show_streams", vid], check=True)
-    else:
-        print("plz enter a proper video format")
+    ckvideo(vid)
+    subprocess.run(["ffprobe", "-v", "error", "-show_format", "-show_streams", str(vid)], check=True)
 
 @app.command()
 def audio(vid: Path):
     ffmpeg()
-    if vid.suffix.lower() in formats:
-        audio=vid.with_suffix(".mp3")
-        subprocess.run(["ffmpeg", "-i", vid, "-vn", "-acodec", "mp3", "-y", str(audio)], check=True)
-    else:
-        print("plz enter a proper video format")
+    ckvideo(vid)
+    audio=vid.with_suffix(".mp3")
+    subprocess.run(["ffmpeg", "-i", str(vid), "-vn", "-acodec", "mp3", "-y", str(audio)], check=True)
+    
 
 @app.command()
 def frames(vid: Path):
     ffmpeg()
-    if vid.suffix.lower() in formats:
-        Fdir= vid.parent
-        frames= Fdir / "Frames"
-        frames.mkdir(exist_ok=True)
-        subprocess.run(["ffmpeg", "-i", str(vid),str(frames/ "frame_%01d.png")],check=True )
-    else:
-        print("plz enter a proper video format")
-
+    ckvideo(vid)
+    Fdir= vid.parent
+    frames= Fdir / "Frames" / vid.stem
+    frames.mkdir(parents=True,exist_ok=True)
+    subprocess.run(["ffmpeg", "-i", str(vid),str(frames/ "frame_%02d.png")],check=True )
+   
 @app.command()
 def gif(vid: Path):
     ffmpeg()
-    if vid.suffix.lower() in formats:
-        gif=vid.with_suffix(".gif")
-        subprocess.run(["ffmpeg", "-i", vid, "-t", "3", "-vf", "scale=320:-1", "-y", str(gif)], check=True)
-    else:
-        print("plz enter a proper video format")
+    ckvideo(vid)
+    gif=vid.with_suffix(".gif")
+    subprocess.run(["ffmpeg", "-i", str(vid), "-t", "3", "-vf", "scale=320:-1", "-y", str(gif)], check=True)
 
 @app.command()
 def mute(vid: Path):
     ffmpeg()
-    if vid.suffix.lower() in formats:
-        mute=vid.with_stem(f"{vid.stem}_muted").with_suffix(vid.suffix)
-        subprocess.run(["ffmpeg", "-i", vid, "-c", "copy", "-an", "-y", str(mute)], check=True)
-    else:
-        print("plz enter a proper video format")
+    ckvideo(vid)
+    mute=vid.with_stem(f"{vid.stem}_muted").with_suffix(vid.suffix)
+    subprocess.run(["ffmpeg", "-i", str(vid), "-c", "copy", "-an", "-y", str(mute)], check=True)
+
+@app.command()
+def compress(vid: Path, crf: int=28):
+    ffmpeg()
+    ckvideo(vid)
+    compress= vid.with_stem(f"{vid.stem}_compressed").with_suffix(".mkv")
+    subprocess.run(["ffmpeg", "-i", str(vid),"-c:v", "libx264", "-crf", str(crf), "-preset","medium","-c:a","aac","-b:a","96k","-y",str(compress),], check=True)
 
 if __name__=="__main__":
         app()
