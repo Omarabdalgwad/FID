@@ -4,8 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "fid-cli"
-version = "0.3.2"
-license = { text = "MIT" }
+version = "0.3.1"
 description = "Simple based ffmpeg CLI for video/audio operations"
 readme = "README.md"
 authors = [{ name = "omar_abdalgwad", email = "ahlawyomar95@gmail.com" }]
