@@ -18,3 +18,4 @@ pip install fid-cli
 | `fid mute "videoPath"` | `mute the video` |
 | `fid gif "videoPath"` | `make a gif from the video` |
 | `fid frames "videoPath"` | `extract all video frames and add them in a folder`|
+| `fid compress "videoPath"` | `Compress the video to reduce its file size`|
