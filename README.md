@@ -21,3 +21,5 @@ https://github.com/user-attachments/assets/5c1bb2ac-1793-44b8-8240-bc71a1919d5a
 | `fid mute "videoPath"` | `mute the video` |
 | `fid gif "videoPath"` | `make a gif from the video` |
 | `fid frames "videoPath"` | `extract all video frames and add them in a folder`|
+| `fid frames "videoPath"` | `extract all video frames and add them in a folder`|
+| `fid compress "videoPath"` | `Compress the video to reduce its file size`|
