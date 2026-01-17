@@ -1,4 +1,4 @@
-# FID
+# fid-ffmpeg
 simple ffmpeg based cli for video operations
 
 ## installation 
@@ -7,7 +7,7 @@ simple ffmpeg based cli for video operations
 - install ffmpeg : [Download FFmpeg](https://www.ffmpeg.org/download.html)
 - then install fid-cli with pip :
 ```bash
-pip install fid-cli
+pip install fid-ffmpeg
 ```
 ## installation demo
 https://github.com/user-attachments/assets/5c1bb2ac-1793-44b8-8240-bc71a1919d5a
