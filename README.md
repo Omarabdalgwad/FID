@@ -9,6 +9,9 @@ simple ffmpeg based cli for video operations
 ```bash
 pip install fid-cli
 ```
+## installation demo
+https://github.com/user-attachments/assets/5c1bb2ac-1793-44b8-8240-bc71a1919d5a
+
 ## Commands
 | Command | Description |
 |---------|------------|
