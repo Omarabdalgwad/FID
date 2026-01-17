@@ -1,8 +1,10 @@
 [build-system]
 requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
-
 [project]
+name = "fid-ffmpeg"
+version = "0.3.4"
+description = " based ffmpeg CLI for video operations"
 name = "fid-cli"
 version = "0.3.2"
 description = "Simple based ffmpeg CLI for video/audio operations"
