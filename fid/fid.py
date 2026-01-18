@@ -2,9 +2,15 @@ import typer
 import subprocess
 from pathlib import Path
 import shutil
+from .welcome import welcome
 app = typer.Typer()
 
 formats = [".mp4",".mov",".avi",".webm"]
+
+@app.callback(invoke_without_command=True)
+def start(ctx : typer.Context):
+    if ctx.invoked_subcommand is None:
+        welcome()
 
 def ffmpeg():
     if shutil.which("ffmpeg")is None:
@@ -16,7 +22,6 @@ def ckvideo(vid:Path):
         print("file doesn't exist")
         raise typer.Exit()
     
-
 
 @app.command()
 def info(vid: Path):
@@ -47,6 +52,7 @@ def gif(vid: Path):
     ckvideo(vid)
     gif=vid.with_suffix(".gif")
     subprocess.run(["ffmpeg", "-i", str(vid), "-t", "3", "-vf", "scale=320:-1", "-y", str(gif)], check=True)
+
 
 @app.command()
 def mute(vid: Path):
