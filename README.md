@@ -4,7 +4,7 @@ ffmpeg based cli for video operations
 fid
 ```
 https://github.com/user-attachments/assets/abcc8aa0-3ada-4548-8f99-987687cfccd9
-
+ffmpeg based cli for video operations
 
 ## installation 
 
