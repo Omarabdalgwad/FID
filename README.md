@@ -1,5 +1,10 @@
 # fid-ffmpeg
 ffmpeg based cli for video operations
+```bash
+fid
+```
+https://github.com/user-attachments/assets/abcc8aa0-3ada-4548-8f99-987687cfccd9
+
 
 https://github.com/user-attachments/assets/abcc8aa0-3ada-4548-8f99-987687cfccd9
 
