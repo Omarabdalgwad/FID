@@ -5,11 +5,6 @@ fid
 ```
 https://github.com/user-attachments/assets/abcc8aa0-3ada-4548-8f99-987687cfccd9
 
-
-https://github.com/user-attachments/assets/abcc8aa0-3ada-4548-8f99-987687cfccd9
-
-## installation 
-
 - you need to install python >=3.9 : [Download Python](https://www.python.org/downloads/)
 - install ffmpeg : [Download FFmpeg](https://www.ffmpeg.org/download.html)
 - then install fid-cli with pip :
