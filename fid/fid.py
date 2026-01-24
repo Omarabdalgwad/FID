@@ -34,7 +34,7 @@ def audio(vid: Path):
     ffmpeg()
     ckvideo(vid)
     audio=vid.with_suffix(".mp3")
-    subprocess.run(["ffmpeg", "-i", str(vid), "-vn", "-acodec", "mp3", "-y", str(audio)], check=True)
+    subprocess.run(["ffmpeg", "-i", str(vid), "-vn", "-acodec", "libmp3lame", "-y", str(audio)], check=True)
     
 
 @app.command()
@@ -51,7 +51,7 @@ def gif(vid: Path):
     ffmpeg()
     ckvideo(vid)
     gif=vid.with_suffix(".gif")
-    subprocess.run(["ffmpeg", "-i", str(vid), "-t", "3", "-vf", "scale=320:-1", "-y", str(gif)], check=True)
+    subprocess.run(["ffmpeg", "-i", str(vid), "-t", "5", "-vf", "scale=320:-1", "-y", str(gif)], check=True)
 
 
 @app.command()
