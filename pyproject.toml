@@ -3,9 +3,8 @@ requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 [project]
 name = "fid-ffmpeg"
-version = "0.3.8"
+version = "0.4.0"
 description = " based ffmpeg CLI for video operations"
-description = "Simple based ffmpeg CLI for video/audio operations"
 readme = "README.md"
 authors = [{ name = "omar_abdalgwad", email = "ahlawyomar95@gmail.com" }]
 dependencies = ["typer>=0.7"]

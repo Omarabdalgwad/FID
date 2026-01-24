@@ -3,7 +3,7 @@ import subprocess
 from pathlib import Path
 from .error_handling import ffmpeg , ckvideo
 
-def info(app: typer.Typer):
+def info_main(app: typer.Typer):
     @app.command()
     def info(vid: Path):
         ffmpeg()
