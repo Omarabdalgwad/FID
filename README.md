@@ -1,5 +1,6 @@
-# fid-ffmpeg
-ffmpeg based cli for video operations
+# fid-ffmpeg [![PyPI Downloads](https://static.pepy.tech/personalized-badge/fid-ffmpeg?period=total&units=INTERNATIONAL_SYSTEM&left_color=BLACK&right_color=GREEN&left_text=downloads)](https://pepy.tech/projects/fid-ffmpeg)
+
+ffmpeg based cli for video operations 
 ```bash
 fid
 ```
