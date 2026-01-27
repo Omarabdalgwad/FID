@@ -13,7 +13,6 @@ app= typer.Typer()
 def start(ctx : typer.Context):
     if ctx.invoked_subcommand is None:
         welcome()
-        
 
 audio_main(app)
 compress_main(app)
@@ -21,7 +20,6 @@ frames_main(app)
 gif_main(app)
 info_main(app)
 mute_main(app)
-
 
 if __name__=="__main__":
         app()
