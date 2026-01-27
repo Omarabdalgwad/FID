@@ -3,7 +3,7 @@ import subprocess
 from pathlib import Path
 from .error_handling import ffmpeg , ckvideo
 
-def audio_main(app: typer.Typer):
+def mute_main(app: typer.Typer):
     @app.command()
     def mute(vid: Path):
         ffmpeg()

@@ -10,6 +10,6 @@ def frames_main(app: typer.Typer):
         ckvideo(vid)
         Fdir= vid.parent
         frames_out= Fdir / "Frames" / vid.stem
-        frames.mkdir(parents=True,exist_ok=True)
+        frames_out.mkdir(parents=True,exist_ok=True)
         subprocess.run(["ffmpeg", "-i", str(vid),str(frames_out/ "frame_%02d.png")],check=True )
    
